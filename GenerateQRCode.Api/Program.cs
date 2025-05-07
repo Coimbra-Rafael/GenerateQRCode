@@ -23,7 +23,7 @@ app.MapGet("/qrcode-pdf", GenerateQRCodePdf);
 
 static IResult GenerateQRCodePdf()
 {
-    string text = "52023288851";
+    string text = ""; //Adicionar o texto para o qrcode
 
     try
     {
@@ -32,7 +32,7 @@ static IResult GenerateQRCodePdf()
             return Results.BadRequest(new
             {
                 Code = 400,
-                Message = "Texto é obrigatório",
+                Message = "Texto Ã© obrigatÃ³rio",
                 Example = "/qrcode-pdf?text=SeuTextoAqui"
             });
         }
@@ -63,7 +63,7 @@ static IResult GenerateQRCodePdf()
     catch (Exception ex)
     {
         return Results.Problem(
-            title: "Erro na geração do PDF",
+            title: "Erro na geraÃ§Ã£o do PDF",
             detail: ex.Message,
             statusCode: StatusCodes.Status500InternalServerError,
             extensions: new Dictionary<string, object?>
